@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RakBukuController; 
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get("/hello", function () {
+    return 'hello world';
+});
 
 Route::get('/buku', function () {
     $data = [];
@@ -25,3 +29,5 @@ Route::get('/buku', function () {
 Route::get('biodata', function () {
     return view('biodata');
 });
+
+Route::resource('rak_buku', RakBukuController::class);
