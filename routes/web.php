@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\RakBukuController; 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request; 
 
 /*
 |--------------------------------------------------------------------------
@@ -13,8 +14,16 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get("/", function () {
+    return view("welcome");
+});
+
 Route::get("/hello", function () {
     return 'hello world';
+});
+
+Route::get('/coba/{id}', function (string $id) {
+    return view('coba', ['id'=> $id]);
 });
 
 Route::get('/buku', function () {
@@ -28,6 +37,14 @@ Route::get('/buku', function () {
 
 Route::get('biodata', function () {
     return view('biodata');
+});
+
+Route::view('/biodata', 'biodata');
+Route::post('/biodata', function (Request $request) {
+    $output = "Nama: . $request->nama. <br>
+            Email: . $request->email. <br>
+            No. Hp.: $request->no_hp.";
+    return $output;
 });
 
 Route::resource('rak_buku', RakBukuController::class);
