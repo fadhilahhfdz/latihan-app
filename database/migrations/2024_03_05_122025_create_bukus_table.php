@@ -21,7 +21,7 @@ return new class extends Migration
             $table->text('sinopsis')->nullable();
             $table->integer('stok')->nullable();
             $table->integer('id_rak_buku');
-            $table->foreign('id_rak_buku')->references('id')->on('rak_buku')->restricOnUpdate()->cascadeOnDelete();
+            $table->foreign('id_rak_buku')->references('id')->on('rak_buku')->restrictOnUpdate()->cascadeOnDelete();
         });
     }
 
